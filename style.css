@@ -1,0 +1,135 @@
+:root {
+  --primary: #D4A373;
+  --primary-dark: #B08968;
+  --secondary: #E8DCC4;
+  --accent: #F4C2C2;
+  --surface: #FFFFFA;
+  --background: #FDF8F2;
+  --text-primary: #4A3A33;
+  --text-secondary: #8C7A73;
+  --success: #8EAA9A;
+  --error: #E0A3A3;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body { 
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+  background: var(--background); 
+  min-height: 100vh; 
+  overflow-x: hidden; 
+}
+
+.app { max-width: 1000px; margin: 0 auto; padding: 20px; }
+
+header {
+  background: white;
+  padding: 20px;
+  border-radius: 20px 20px 0 0;
+  margin-bottom: -20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  display: flex; justify-content: space-between; align-items: center;
+}
+
+header h1 { color: var(--text-primary); font-size: 24px; font-weight: 700; }
+
+.user-actions { display: flex; gap: 10px; }
+
+.add-btn {
+  background: var(--primary); color: white; border: none;
+  padding: 10px 20px; border-radius: 12px; font-size: 14px; font-weight: 600;
+  cursor: pointer; transition: background 0.3s;
+}
+
+.add-btn:hover { background: var(--primary-dark); }
+
+.overlay {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5); display: none; justify-content: center; align-items: center; z-index: 100;
+}
+
+.overlay.active { display: flex; }
+
+.form-card {
+  background: white; width: 90%; max-width: 400px; border-radius: 20px;
+  padding: 40px 30px; position: relative; animation: slideIn 0.3s ease;
+}
+
+.close-btn {
+  position: absolute; top: 15px; right: 15px; background: none; border: none;
+  font-size: 24px; color: #aaa; cursor: pointer;
+}
+
+.form-group { margin-bottom: 20px; }
+
+.form-group label { display: block; margin-bottom: 8px; color: var(--text-secondary); font-size: 13px; }
+
+.form-group input, .form-group textarea {
+  width: 100%; padding: 12px; border: 1px solid #e0d9cb; border-radius: 12px;
+  font-size: 14px; transition: border-color 0.3s;
+}
+
+.form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--primary); }
+
+.form-group textarea { min-height: 80px; resize: vertical; }
+
+.submit-btn {
+  width: 100%; background: var(--primary); color: white; border: none;
+  padding: 12px; border-radius: 12px; font-size: 15px; font-weight: 600; cursor: pointer;
+  margin-top: 10px;
+}
+
+.submit-btn:hover { background: var(--primary-dark); }
+
+.calendar-container {
+  background: white; border-radius: 20px; padding: 25px; margin: 20px 0;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+.calendar-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+
+.nav-btn {
+  background: var(--primary); color: white; border: none; width: 36px; height: 36px;
+  border-radius: 50%; cursor: pointer; display: flex; justify-content: center; align-items: center;
+}
+
+.nav-btn:hover { background: var(--primary-dark); }
+
+.month-year { color: var(--text-primary); font-size: 18px; font-weight: 600; }
+
+.calendar { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+
+.day-header { padding: 8px; color: var(--text-secondary); font-size: 11px; font-weight: 600; text-align: center; }
+
+.day-cell { padding: 8px; background: transparent; border-radius: 8px; cursor: pointer; transition: background 0.2s; }
+
+.day-cell:hover:not(.empty) { background: var(--secondary); }
+
+.day-number { color: var(--text-primary); font-size: 14px; font-weight: 600; text-align: center; }
+
+.day-number.today { color: var(--primary); }
+
+.day-booking { margin-top: 4px; padding: 2px 6px; background: var(--primary); color: white; border-radius: 10px; font-size: 10px; font-weight: 600; text-align: center; }
+
+.bookings-list { background: white; border-radius: 20px; padding: 25px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
+
+.bookings-list h3 { color: var(--text-primary); margin-bottom: 20px; font-size: 18px; }
+
+.no-bookings { text-align: center; color: var(--text-secondary); padding: 40px 20px; }
+
+.booking-item { background: var(--surface); padding: 15px; border-radius: 12px; margin-bottom: 12px; border-left: 4px solid var(--primary); }
+
+.booking-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px; }
+
+.booking-client { color: var(--text-primary); font-weight: 600; font-size: 13px; }
+
+.booking-date { color: var(--text-secondary); font-size: 11px; }
+
+.booking-details { color: var(--text-secondary); font-size: 11px; margin-top: 4px; }
+
+.booking-delete { margin-top: 8px; background: none; border: none; color: var(--error); font-size: 12px; cursor: pointer; }
+
+@media (max-width: 480px) {
+  .form-card { margin: 20px; padding: 30px 20px; }
+  .calendar { grid-template-columns: repeat(7, 1fr); }
+}
