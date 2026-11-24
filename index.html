@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wedding Bookings</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="apple-touch-icon" href="icon.png">
+  <link rel="manifest" href="manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="theme-color" content="#D4A373">
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>📸 Wedding Bookings</h1>
+      <div class="user-actions">
+        <button class="add-btn" onclick="showAddForm()">+ Add Booking</button>
+      </div>
+    </header>
+    
+    <main>
+      <div class="calendar-container">
+        <div class="calendar-header">
+          <button class="nav-btn" onclick="prevMonth()">←</button>
+          <span id="current-month" class="month-year"></span>
+          <button class="nav-btn" onclick="nextMonth()">→</button>
+        </div>
+        <div id="calendar" class="calendar"></div>
+      </div>
+      
+      <div id="bookings-list" class="bookings-list">
+        <!-- Bookings will appear here -->
+      </div>
+    </main>
+  </div>
+
+  <!-- Add Booking Form -->
+  <div id="add-form-overlay" class="overlay" onclick="closeAddForm(event)">
+    <div class="form-card" onclick="event.stopPropagation()">
+      <h2 id="form-title">Add Booking</h2>
+      <button class="close-btn" onclick="closeAddForm()">&times;</button>
+      
+      <form id="booking-form" onsubmit="saveBooking(event)">
+        <div class="form-group">
+          <label>Client Name</label>
+          <input type="text" id="client-name" required>
+        </div>
+        <div class="form-group">
+          <label>Event Type</label>
+          <input type="text" id="event-type" placeholder="e.g. Wedding, Engagement">
+        </div>
+        <div class="form-group">
+          <label>Package</label>
+          <input type="text" id="package" placeholder="e.g. Full Day, Half Day">
+        </div>
+        <div class="form-group">
+          <label>Price ($)</label>
+          <input type="number" id="price" step="0.01">
+        </div>
+        <div class="form-group">
+          <label>WhatsApp Contact</label>
+          <input type="text" id="whatsapp" placeholder="+1 234 567 8900">
+        </div>
+        <div class="form-group">
+          <label>Notes</label>
+          <textarea id="notes"></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Save Booking</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
